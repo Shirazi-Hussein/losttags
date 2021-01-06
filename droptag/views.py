@@ -4,13 +4,21 @@ from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 from .models import tag
 from .forms import tagForm
-from django.contrib import messages 
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
-    tags = tag.objects.all()
-    return render(request, 'index.html', {'Tags':tags})
+    tags = tag.objects.order_by('-date_filled')[0:3]
+    context = {
+        'tags': tags,
+    }
+    return render(request, 'index.html', context)
 
+
+
+
+@login_required(login_url='/signup')
 def form_detail(request): 
     if request.method == 'POST':
         form = tagForm(request.POST)
@@ -35,7 +43,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('form_detail')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})

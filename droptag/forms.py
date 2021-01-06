@@ -10,7 +10,8 @@ from .models import tag
 class tagForm(forms.ModelForm): 
     class Meta: 
         model = tag
-        fields = ['tag_name', 
+        fields = ['platform',
+        'tag_name', 
         'id_link', 
         'geo_location', 
         'time_met'

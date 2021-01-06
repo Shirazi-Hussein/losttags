@@ -1,0 +1,13 @@
+{% for tag in tags %}
+        <section class="tags">
+                <h3><a class="tag-title"
+                    {{ post.tag_name }}
+                </a></h3>
+                <span class="tag-meta">
+                    {{ tag.time_met }}
+                </span>
+                <p class="tag-user">
+                    {{ tag.user }}
+                </p>
+        </section>
+{% endfor %}
