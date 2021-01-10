@@ -3,9 +3,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
 from .models import tag
-from .forms import tagForm
+from .forms import tagForm, ProfileForm, SignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 # Create your views here.
 
 def home(request):
@@ -15,8 +16,19 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
-
-
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('homepage')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
 
 @login_required(login_url='/signup')
 def form_detail(request): 
@@ -34,16 +46,19 @@ def form_detail(request):
         
     return render(request, 'name.html', {'form': form})
 
-def signup(request):
+@login_required(login_url='/signup')
+@transaction.atomic
+def update_profile(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('form_detail')
+        profile_form = ProfileForm(request.POST, instance=request.user.userprofile)
+        if profile_form.is_valid():
+            profile_form.save()
+            messages.success(request, ('Your profile was successfully updated!'))
+            return redirect('homepage')
+        else:
+            messages.error(request, ('Please correct the error below.'))
     else:
-        form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+        profile_form = ProfileForm(instance=request.user.userprofile)
+    return render(request, 'userprofile.html', {
+        'profile_form': profile_form
+    })
