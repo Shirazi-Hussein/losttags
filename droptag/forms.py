@@ -22,17 +22,14 @@ class tagForm(forms.ModelForm):
         
 
 class SignUpForm(UserCreationForm):
-    name = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    id_link = forms.CharField(max_length=30, required=False, help_text='Optional.')
-    about = forms.CharField(max_length=254, required=False, help_text='Enter any additional information.')
 
     class Meta:
         model = User
-        fields = ('username', 'name', 'id_link', 'about', 'password1', 'password2', )
+        fields = ('username', 'password1', 'password2', )
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('id_link', 'about')
+        fields = ('name', 'id_link', 'about')
 

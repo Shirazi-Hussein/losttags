@@ -19,7 +19,7 @@ class UserProfile(models.Model):
     username = models.CharField(max_length=50, blank=True) 
     name = models.CharField(max_length=200, blank=True) 
     id_link = models.CharField(max_length=200, blank=True) 
-    about = models.CharField(max_length=500, blank=True)
+    about = models.TextField(blank=True)
 
 @receiver(post_save, sender=User)
 def create_userprofile(sender, instance, created, **kwargs):
@@ -34,7 +34,7 @@ class tag(models.Model):
     user = models.ForeignKey(User, 
                         default = 1, 
                         null = True,  
-                        on_delete = models.SET_NULL 
+                        on_delete = models.CASCADE 
                         )
     
     platform = models.CharField(
@@ -45,11 +45,11 @@ class tag(models.Model):
     id_link = models.CharField(max_length=200, blank=True)
     geo_location = models.CharField(max_length=100, blank=True)
     time_met = models.DateField(blank=True)
-    note = models.CharField(max_length=500, blank=True)
+    note = models.TextField(blank=True)
     date_filled = models.DateTimeField(auto_now_add=True)
         
     def __str__(self):
-        return self.tag_name
+        return self.username
 
 
             

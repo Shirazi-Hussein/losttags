@@ -1,20 +1,23 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
-from django.http import HttpResponse
 from .models import tag
 from .forms import tagForm, ProfileForm, SignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
-def home(request):
-    tags = tag.objects.order_by('-date_filled')[0:3]
-    context = {
-        'tags': tags,
-    }
-    return render(request, 'index.html', context)
+
+class Home(ListView):
+    model = tag
+    template_name = 'index.html'
+
+class TagDetailView(DetailView):
+    model = tag
+    template_name = 'tag.html'
+    
 
 def signup(request):
     if request.method == 'POST':
@@ -46,19 +49,24 @@ def form_detail(request):
         
     return render(request, 'name.html', {'form': form})
 
+
 @login_required(login_url='/signup')
 @transaction.atomic
 def update_profile(request):
     if request.method == 'POST':
+        user_form = SignUpForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.userprofile)
-        if profile_form.is_valid():
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
             profile_form.save()
             messages.success(request, ('Your profile was successfully updated!'))
             return redirect('homepage')
         else:
             messages.error(request, ('Please correct the error below.'))
     else:
+        user_form = SignUpForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.userprofile)
     return render(request, 'userprofile.html', {
+        'user_form': user_form,
         'profile_form': profile_form
     })
