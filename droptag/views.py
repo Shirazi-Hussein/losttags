@@ -6,7 +6,7 @@ from .forms import tagForm, ProfileForm, SignUpForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 # Create your views here.
 
 
@@ -33,22 +33,13 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-@login_required(login_url='/signup')
-def form_detail(request): 
-    if request.method == 'POST':
-        form = tagForm(request.POST)
-        if form.is_valid():
-            obj = form.save(commit = False) 
-            obj.user = request.user; 
-            obj.save() 
-            form = tagForm() 
-            messages.success(request, "Successfully created") 
-            
-    else:
-        form = tagForm()
-        
-    return render(request, 'name.html', {'form': form})
 
+class CreateTag(CreateView):
+    model = tag
+    template_name = "createtag.html"
+    fields = ['user', 'platform', 'username', 'id_link', 'geo_location', 'time_met',
+              'note']
+    
 
 @login_required(login_url='/signup')
 @transaction.atomic

@@ -6,11 +6,13 @@
 {% block content %}
 
 
-<h1>{{ tag.username }}</h1>
-<small>Platform: {{ tag.platform }}</small><br/>
+<h1><i>{{ tag.username }}</i></h1>
+<small></b>Platform:</b> {{ tag.platform }}</small><br/>
 <hr>
 <br/>
-{{ tag.user }} - {{ tag.date_filled }} - {{ tag.note }}
+<b>Tag Owner:</b> {{ tag.user }}<br/>
+<b>Date Filled:</b> {{ tag.date_filled }}<br/>
+<b>Note:</b> {{ tag.note }}
 
 <br/><br/>
 <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>

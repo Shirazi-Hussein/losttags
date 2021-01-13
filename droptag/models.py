@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.urls import reverse
 
 # Create your models here.
 
@@ -50,6 +51,9 @@ class tag(models.Model):
         
     def __str__(self):
         return self.username
+    
+    def get_absolute_url(self):
+        return reverse('tag_display', args=[str(self.id)])
 
 
             
