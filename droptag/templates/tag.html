@@ -1,7 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Tag:  {{ tag.username }}{% endblock %}
+
+
+{% block content %}
+
+
 <h1>{{ tag.username }}</h1>
 <small>Platform: {{ tag.platform }}</small><br/>
+<hr>
 <br/>
 {{ tag.user }} - {{ tag.date_filled }} - {{ tag.note }}
 
 <br/><br/>
-<a href="{% url 'home' %}">Back</a>
+<a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
+
+
+{% endblock %}
