@@ -7,12 +7,21 @@
 
 
 <h1><i>{{ tag.username }}</i></h1>
-<small></b>Platform:</b> {{ tag.platform }}</small><br/>
+<p class="font-weight-light"><b>Platform:</b> {{ tag.get_platform_display }} </p>
 <hr>
 <br/>
 <b>Tag Owner:</b> {{ tag.user }}<br/>
-<b>Date Filled:</b> {{ tag.date_filled }}<br/>
-<b>Note:</b> {{ tag.note }}
+{% if tag.id_link %}
+    <b>Links:</b> {{ tag.id_link }}<br/>
+{% endif %}
+{% if tag.time_met %}
+    <b>Last Seen:</b> {{ tag.time_met }}<br/>
+{% endif %}
+{% if tag.note %}
+    <b>Note:</b> {{ tag.note }}<br/>
+{% endif %}
+
+<small>Date Filled: {{ tag.date_filled }}<br/>
 
 <br/><br/>
 <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>

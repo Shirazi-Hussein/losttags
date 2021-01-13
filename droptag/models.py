@@ -9,10 +9,10 @@ from django.urls import reverse
 
 
 PLATFORM_CHOICES = (
-        ("PSN", "PlayStation Network ID"),
-        ("XB", "Xbox Gamertag"),
-        ("DC", "Discord Username"),
-        ("STM", "Steam Username"),
+        ("PSN", "PlayStation"),
+        ("XB", "Xbox"),
+        ("DC", "Discord"),
+        ("STM", "Steam"),
         )
 
 class UserProfile(models.Model):
@@ -44,7 +44,6 @@ class tag(models.Model):
         choices=PLATFORM_CHOICES)
     username = models.CharField(max_length=50)
     id_link = models.CharField(max_length=200, blank=True)
-    geo_location = models.CharField(max_length=100, blank=True)
     time_met = models.DateField(blank=True)
     note = models.TextField(blank=True)
     date_filled = models.DateTimeField(auto_now_add=True)

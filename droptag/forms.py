@@ -14,8 +14,7 @@ class tagForm(forms.ModelForm):
         model = tag
         fields = ['platform',
         'username', 
-        'id_link', 
-        'geo_location', 
+        'id_link',  
         'time_met',
         'note'
         ]

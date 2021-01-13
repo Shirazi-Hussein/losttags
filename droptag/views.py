@@ -37,7 +37,7 @@ def signup(request):
 class CreateTag(CreateView):
     model = tag
     template_name = "createtag.html"
-    fields = ['user', 'platform', 'username', 'id_link', 'geo_location', 'time_met',
+    fields = ['user', 'platform', 'username', 'id_link', 'time_met',
               'note']
     
 
