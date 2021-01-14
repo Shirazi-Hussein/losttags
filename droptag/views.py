@@ -36,9 +36,8 @@ def signup(request):
 
 class CreateTag(CreateView):
     model = tag
+    form_class = tagForm
     template_name = "createtag.html"
-    fields = ['user', 'platform', 'username', 'id_link', 'time_met',
-              'note']
     
 
 @login_required(login_url='/signup')
