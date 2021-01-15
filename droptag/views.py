@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from .models import tag
-from .forms import tagForm, ProfileForm, SignUpForm
+from .forms import tagForm, ProfileForm, SignUpForm, UpdateTagForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 # Create your views here.
 
 
@@ -14,10 +14,23 @@ class Home(ListView):
     model = tag
     template_name = 'index.html'
 
+
 class TagDetailView(DetailView):
     model = tag
     template_name = 'tag.html'
     
+
+class CreateTag(CreateView):
+    model = tag
+    form_class = tagForm
+    template_name = "createtag.html"
+
+
+class UpdateTag(UpdateView):
+    model = tag
+    form_class = UpdateTagForm
+    template_name = 'update_tag.html'
+
 
 def signup(request):
     if request.method == 'POST':
@@ -33,12 +46,6 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
-
-class CreateTag(CreateView):
-    model = tag
-    form_class = tagForm
-    template_name = "createtag.html"
-    
 
 @login_required(login_url='/signup')
 @transaction.atomic
