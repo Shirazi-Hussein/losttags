@@ -6,13 +6,16 @@ from .forms import tagForm, ProfileForm, SignUpForm, UpdateTagForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 # Create your views here.
 
 
 class Home(ListView):
     model = tag
     template_name = 'index.html'
+    #view how many recent tags you want on 'home'
+    queryset = tag.objects.order_by('-date_filled')[0:3]
 
 
 class TagDetailView(DetailView):
@@ -31,6 +34,12 @@ class UpdateTag(UpdateView):
     form_class = UpdateTagForm
     template_name = 'update_tag.html'
 
+
+class DeleteTag(DeleteView):
+    model = tag
+    template_name = "deletetag.html"
+    success_url = reverse_lazy('homepage')
+    
 
 def signup(request):
     if request.method == 'POST':

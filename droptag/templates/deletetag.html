@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete Tag {% endblock %}
+
+{% block content %}
+
+<h1><i>{{ tag.username }}</i></h1>
+<p class="font-weight-light"><b>Platform:</b> {{ tag.get_platform_display }} </p>
+<hr>
+<br/>
+<div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        {% if tag.id_link %}
+            <b>Links:</b> {{ tag.id_link }}<br/>
+        {% endif %}
+        {% if tag.time_met %}
+            <b>Last Seen:</b> {{ tag.time_met }}<br/>
+        {% endif %}
+        {% if tag.note %}
+            <b>Note:</b> {{ tag.note }}<br/>
+        {% endif %}
+        <small>Date Filled: {{ tag.date_filled }}<br/>
+</div>
+<br/>
+<strong>Delete this tag? This can't be undone.</strong><br/>
+<br/><br/>
+<a href="{% url 'tag_display' tag.pk %}" class="btn btn-primary">Back</a> <button class="btn btn-danger">Delete</button>
+
+{% endblock %}
+
+    
