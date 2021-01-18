@@ -20,11 +20,12 @@
     <div class="navbar-nav">
       <a class="nav-link" href="#">All Tags</a>
       <a class="nav-link" href="{% url 'create_tag' %}">Make A Tag</a>
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Profile</a>
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+      <a class="nav-link" href="{% url 'register' %}">Register</a>
     </div>
   </div>
 </nav>
-    
+
     <br/>
     <div class="container">
         {% block content %}
