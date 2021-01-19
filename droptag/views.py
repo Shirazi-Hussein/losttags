@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from .models import tag
 from .forms import tagForm, ProfileForm, SignUpForm, UpdateTagForm
@@ -8,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 
@@ -23,19 +23,28 @@ class TagDetailView(DetailView):
     template_name = 'tag.html'
     
 
-class CreateTag(CreateView):
+class CreateTag(LoginRequiredMixin, CreateView):
+    login_url = '/users/login'
+    redirect_field_name = 'login'
+    
     model = tag
     form_class = tagForm
     template_name = "createtag.html"
+    
 
-
-class UpdateTag(UpdateView):
+class UpdateTag(LoginRequiredMixin, UpdateView):
+    login_url = '/users/login'
+    redirect_field_name = 'login'
+    
     model = tag
     form_class = UpdateTagForm
     template_name = 'update_tag.html'
 
 
-class DeleteTag(DeleteView):
+class DeleteTag(LoginRequiredMixin, DeleteView):
+    login_url = '/users/login'
+    redirect_field_name = 'login'
+    
     model = tag
     template_name = "deletetag.html"
     success_url = reverse_lazy('homepage')
@@ -56,6 +65,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+#comment below out
 @login_required(login_url='/signup')
 @transaction.atomic
 def update_profile(request):

@@ -22,8 +22,9 @@
 {% endif %}
 
 <small>Date Filled: {{ tag.date_filled }}<br/>
-<small><a href="{% url 'update_tag' tag.pk %}">(Edit)</a> <a href="{% url 'delete_tag' tag.pk %}">(Delete)</a> </small>
-
+{% if user.is_authenticated %}
+    <small><a href="{% url 'update_tag' tag.pk %}">(Edit)</a> <a href="{% url 'delete_tag' tag.pk %}">(Delete)</a> </small>
+{% endif %}
 <br/><br/>
 <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
 
