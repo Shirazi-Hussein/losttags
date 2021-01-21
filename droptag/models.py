@@ -33,8 +33,7 @@ def save_userprofile(sender, instance, **kwargs):
 
 class tag(models.Model): 
     user = models.ForeignKey(User, 
-                        default = 1, 
-                        null = True,  
+                        default = 1,   
                         on_delete = models.CASCADE 
                         )
     
@@ -44,7 +43,7 @@ class tag(models.Model):
         choices=PLATFORM_CHOICES)
     username = models.CharField(max_length=50)
     id_link = models.CharField(max_length=200, blank=True)
-    time_met = models.DateField(blank=True)
+    time_met = models.DateField()
     note = models.TextField(blank=True)
     date_filled = models.DateTimeField(auto_now_add=True)
         

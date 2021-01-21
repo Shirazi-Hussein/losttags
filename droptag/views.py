@@ -16,6 +16,12 @@ class Home(ListView):
     template_name = 'index.html'
     #view how many recent tags you want on 'home'
     queryset = tag.objects.order_by('-date_filled')[0:3]
+    
+    
+class AllTags(ListView):
+    model = tag
+    template_name = 'alltags.html'
+    queryset = tag.objects.order_by('-date_filled')
 
 
 class TagDetailView(DetailView):
