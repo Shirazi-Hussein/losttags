@@ -22,7 +22,6 @@ class tagForm(forms.ModelForm):
         ]
          
         widgets = {
-            #'user': forms.Select(attrs={'class':'form-control'}),
             'user': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'user_js', 'type':'hidden'}),
             'platform': forms.Select(attrs={'class':'form-control'}),
             'username': forms.TextInput(attrs={'class':'form-control', 
