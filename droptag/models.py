@@ -1,8 +1,5 @@
 from django.db import models
-from django.conf import settings
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.urls import reverse
 
 # Create your models here.
@@ -16,20 +13,13 @@ PLATFORM_CHOICES = (
         )
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=50, blank=True) 
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE) 
     name = models.CharField(max_length=200, blank=True) 
     id_link = models.CharField(max_length=200, blank=True) 
-    about = models.TextField(blank=True)
-
-@receiver(post_save, sender=User)
-def create_userprofile(sender, instance, created, **kwargs):
-    if created:
-        UserProfile.objects.create(user=instance)
-
-@receiver(post_save, sender=User)
-def save_userprofile(sender, instance, **kwargs):
-    instance.userprofile.save()
+    bio = models.TextField(blank=True)
+    
+    def __str__(self):
+        return str(self.user)
 
 class tag(models.Model): 
     user = models.ForeignKey(User, 

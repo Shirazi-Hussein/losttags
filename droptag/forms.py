@@ -5,10 +5,7 @@ Created on Sat Dec 26 20:40:28 2020
 @author: truet
 """
 from django import forms 
-import django.forms.widgets
-from .models import tag, UserProfile
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from .models import tag
   
 class tagForm(forms.ModelForm): 
     class Meta: 
@@ -54,16 +51,4 @@ class UpdateTagForm(forms.ModelForm):
         
         
         
-        
-class SignUpForm(UserCreationForm):
-
-    class Meta:
-        model = User
-        fields = ('username', 'password1', 'password2', )
-
-
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserProfile
-        fields = ('name', 'id_link', 'about')
 
