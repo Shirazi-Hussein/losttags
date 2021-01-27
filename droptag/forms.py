@@ -5,13 +5,13 @@ Created on Sat Dec 26 20:40:28 2020
 @author: truet
 """
 from django import forms 
-from .models import tag
+from .models import tag, UserProfile
+from django.contrib.auth.forms import UserCreationForm
   
 class tagForm(forms.ModelForm): 
     class Meta: 
         model = tag
-        fields = ['user',
-        'platform',
+        fields = ['platform',
         'username', 
         'id_link',  
         'time_met',
@@ -19,7 +19,6 @@ class tagForm(forms.ModelForm):
         ]
          
         widgets = {
-            'user': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'user_js', 'type':'hidden'}),
             'platform': forms.Select(attrs={'class':'form-control'}),
             'username': forms.TextInput(attrs={'class':'form-control', 
                                                'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
@@ -46,7 +45,20 @@ class UpdateTagForm(forms.ModelForm):
             'time_met': forms.DateInput(attrs={'class':'form-control', 'placeholder':'When Did You Meet Them?'}),
             'note': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Extra Information (optional)'}),
             }
+
+
+class UserProfileForm(UserCreationForm):
+    class Meta:
+        model = UserProfile
+        fields = ['name',
+                  'steam_id', 
+                  'psn_id', 
+                  'xbox_id', 
+                  'discord_id', 
+                  'bio'
+                  ]
         
+        widgets = {}
         
         
         

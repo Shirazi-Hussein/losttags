@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+AUTH_PROFILE_MODULE = 'droptag.UserProfile'
+
 INSTALLED_APPS = [
     'droptag.apps.DroptagConfig',
     'django.contrib.admin',

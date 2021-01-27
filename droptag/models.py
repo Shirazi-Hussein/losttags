@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-# Create your models here.
 
 
 PLATFORM_CHOICES = (
@@ -15,11 +14,16 @@ PLATFORM_CHOICES = (
 class UserProfile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE) 
     name = models.CharField(max_length=200, blank=True) 
-    id_link = models.CharField(max_length=200, blank=True) 
+    steam_id = models.CharField(max_length=200, blank=True)
+    psn_id = models.CharField(max_length=200, blank=True) 
+    xbox_id = models.CharField(max_length=200, blank=True) 
+    discord_id = models.CharField(max_length=45, blank=True) 
     bio = models.TextField(blank=True)
-    
+
     def __str__(self):
         return str(self.user)
+    
+
 
 class tag(models.Model): 
     user = models.ForeignKey(User, 

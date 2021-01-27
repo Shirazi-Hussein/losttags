@@ -8,6 +8,7 @@ from django.urls import path
 from django.conf.urls import url
 from . import views
 from .views import Home, TagDetailView, CreateTag, UpdateTag, DeleteTag, AllTags
+from .views import ViewProfile
 
 urlpatterns = [
     path('', Home.as_view(), name='homepage'),
@@ -16,5 +17,6 @@ urlpatterns = [
     path("create_tag/", CreateTag.as_view(), name='create_tag'),
     path("tag/update/<int:pk>", UpdateTag.as_view(), name='update_tag'),
     path("tag/delete/<int:pk>", DeleteTag.as_view(), name='delete_tag'),
+    path(r'^(?P<user>[-_\w]+)/detail/$', views.ViewProfile, name='view_profile'),
 ]
 
