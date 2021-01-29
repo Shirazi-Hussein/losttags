@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}View Profile{% endblock %}
+{% block content %}
+
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {{ p_reg_form.as_p }}
+  <button type="submit">Save changes</button>
+</form>
+
+{% endblock %}

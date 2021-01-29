@@ -1,10 +1,12 @@
 from .models import tag, UserProfile
-from .forms import tagForm, UpdateTagForm
+from .forms import tagForm, UpdateTagForm, UserProfileForm, UserRegisterForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 
 
@@ -24,11 +26,6 @@ class AllTags(ListView):
 class TagDetailView(DetailView):
     model = tag
     template_name = 'tag.html'
-
-
-def ViewProfile(request, user):
-    profile = UserProfile.objects.get(user=user)
-    return render(request, 'viewprofile.html', {'profile':profile})
 
 
 class CreateTag(LoginRequiredMixin, CreateView):
@@ -61,6 +58,36 @@ class DeleteTag(LoginRequiredMixin, DeleteView):
     model = tag
     template_name = "deletetag.html"
     success_url = reverse_lazy('homepage')
+
+
+def ViewProfile(request, user):
+    profile = UserProfile.objects.get(user=user)
+    return render(request, 'viewprofile.html', {'profile':profile})
+
+
+#experimental
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        p_reg_form = UserProfileForm(request.POST)
+        if form.is_valid() and p_reg_form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            p_reg_form = UserProfileForm(request.POST, instance=user.userprofile)
+            p_reg_form.full_clean()
+            p_reg_form.save()
+            #return reverse_lazy('login')
+            return HttpResponseRedirect(reverse('homepage'))
+    else:
+        form = UserRegisterForm()
+        p_reg_form = UserProfileForm()
+        
+    context = {
+        'form': form,
+        'p_reg_form': p_reg_form
+    }
+    return render(request, 'register.html', context)
+
 
 
     

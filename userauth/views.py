@@ -10,10 +10,12 @@ class ChangePasswordView(PasswordChangeView):
     success_url = reverse_lazy('edit_profile')
     template_name = 'registration/change-password.html'
 
-class UserRegisterView(generic.CreateView):
-    form_class = SignUpForm
-    template_name = 'registration/register.html'
-    success_url = reverse_lazy('login')
+# =============================================================================
+# class UserRegisterView(generic.CreateView):
+#     form_class = SignUpForm
+#     template_name = 'registration/register.html'
+#     success_url = reverse_lazy('login')
+# =============================================================================
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm

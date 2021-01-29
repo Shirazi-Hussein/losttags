@@ -7,11 +7,11 @@ Created on Thu Dec 24 12:25:09 2020
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from .views import Home, TagDetailView, CreateTag, UpdateTag, DeleteTag, AllTags
-from .views import ViewProfile
+from .views import Home, TagDetailView, CreateTag, UpdateTag, DeleteTag, AllTags, ViewProfile, register
 
 urlpatterns = [
     path('', Home.as_view(), name='homepage'),
+    path('register/', views.register, name='register'),
     path('alltags/', AllTags.as_view(), name='alltags'),
     path('tag/<int:pk>', TagDetailView.as_view(), name='tag_display'),
     path("create_tag/", CreateTag.as_view(), name='create_tag'),

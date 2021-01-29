@@ -24,11 +24,10 @@ class SignUpForm(UserCreationForm):
 
 
 class EditProfileForm(UserChangeForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control'}))
     
     class Meta:
         model = User
-        fields = ('email', 'password')
+        fields = ('password',)
         
 
 class PasswordChangingForm(PasswordChangeForm):
