@@ -1,5 +1,5 @@
 from .models import tag, UserProfile
-from .forms import tagForm, UpdateTagForm, UserProfileForm, UserRegisterForm
+from .forms import tagForm, UpdateTagForm, UserProfileForm, UserRegisterForm, EditUserForm, EditUserProfileForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -65,7 +66,6 @@ def ViewProfile(request, user):
     return render(request, 'viewprofile.html', {'profile':profile})
 
 
-#experimental
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -76,7 +76,6 @@ def register(request):
             p_reg_form = UserProfileForm(request.POST, instance=user.userprofile)
             p_reg_form.full_clean()
             p_reg_form.save()
-            #return reverse_lazy('login')
             return HttpResponseRedirect(reverse('homepage'))
     else:
         form = UserRegisterForm()
@@ -87,6 +86,30 @@ def register(request):
         'p_reg_form': p_reg_form
     }
     return render(request, 'register.html', context)
+
+
+
+#need to add userprofile form here too, so its all on one edit profile page
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditUserForm(request.POST, instance=request.user)
+        profile_form = EditUserProfileForm(request.POST, instance=request.user.userprofile)
+
+        if form.is_valid() and profile_form.is_valid():
+            user_form = form.save()
+            custom_form = profile_form.save(False)
+            custom_form.user = user_form
+            custom_form.save()
+            return HttpResponseRedirect(reverse('homepage'))
+    else:
+        form = EditUserForm(instance=request.user)
+        profile_form = EditUserProfileForm(instance=request.user.userprofile)
+        args = {}
+        args['form'] = form
+        args['profile_form'] = profile_form
+        return render(request, 'edit_profile.html', args)
+
 
 
 

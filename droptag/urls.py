@@ -18,5 +18,6 @@ urlpatterns = [
     path("tag/update/<int:pk>", UpdateTag.as_view(), name='update_tag'),
     path("tag/delete/<int:pk>", DeleteTag.as_view(), name='delete_tag'),
     path(r'^(?P<user>[-_\w]+)/detail/$', views.ViewProfile, name='view_profile'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
 ]
 

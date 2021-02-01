@@ -6,7 +6,7 @@ Created on Sat Dec 26 20:40:28 2020
 """
 from django import forms 
 from .models import tag, UserProfile
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.models import User
   
 class tagForm(forms.ModelForm): 
@@ -74,6 +74,33 @@ class UserProfileForm(forms.ModelForm):
         
         widgets = {
             'name': forms.TextInput(attrs={'class':'form-control'}),
+            'steam_id': forms.TextInput(attrs={'class':'form-control'}),
+            'psn_id': forms.TextInput(attrs={'class':'form-control'}),
+            'xbox_id': forms.TextInput(attrs={'class':'form-control'}),
+            'discord_id': forms.TextInput(attrs={'class':'form-control'}),
+            'bio': forms.Textarea(attrs={'class':'form-control'}),
+            }
+
+
+#experimental below
+class EditUserForm(forms.ModelForm):
+    
+    class Meta:
+        model = User
+        fields = ('password',)
+        
+       
+class EditUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['steam_id', 
+                  'psn_id', 
+                  'xbox_id', 
+                  'discord_id', 
+                  'bio'
+                  ]
+        
+        widgets = {
             'steam_id': forms.TextInput(attrs={'class':'form-control'}),
             'psn_id': forms.TextInput(attrs={'class':'form-control'}),
             'xbox_id': forms.TextInput(attrs={'class':'form-control'}),
