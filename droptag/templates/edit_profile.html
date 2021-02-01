@@ -14,7 +14,9 @@
             {% csrf_token %}
             {{ profile_form.as_p }}
             {{ form.as_p }}
-            <button class="btn btn-primary">Submit</button>
+            <small>Click here to<a href="{% url 'change_password' %}"> Change Password</a></small>
+            <br/><br/>
+            <button class="btn btn-primary">Update</button>
     </div>
 </div>
 

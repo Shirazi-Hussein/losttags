@@ -2,8 +2,26 @@
 {% block title %}View Profile{% endblock %}
 {% block content %}
 
-{{ profile.user }}
-
+<h1>{{ profile.user }}'s Profile</h1>
+<hr>
+{% if profile.name %}
+    <b>Name:</b> {{ profile.name }}<br/>
+{% endif %}
+{% if profile.steam_id %}
+    <b>Steam:</b> {{ profile.steam_id }}<br/>
+{% endif %}
+{% if profile.psn_id %}
+    <b>PSN:</b> {{ profile.psn_id }}<br/>
+{% endif %}
+{% if profile.xbox_id %}
+    <b>Xbox:</b> {{ profile.xbox_id }}<br/>
+{% endif %}
+{% if profile.discord_id %}
+    <b>Discord:</b> {{ profile.discord_id }}<br/>
+{% endif %}
+{% if profile.bio %}
+    <b>Bio:</b> {{ profile.bio }}<br/>
+{% endif %}
 
 
 {% endblock %}

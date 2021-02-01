@@ -82,13 +82,19 @@ class UserProfileForm(forms.ModelForm):
             }
 
 
-#experimental below
-class EditUserForm(forms.ModelForm):
+
+class PasswordChangingForm(PasswordChangeForm):
+    old_password = forms.CharField(label='Old Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
+    new_password1 = forms.CharField(label='New Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
+    new_password2 = forms.CharField(label='New Password Again', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
+    
     
     class Meta:
         model = User
-        fields = ('password',)
-        
+        fields = ('old_password', 'new_password1', 'new_password2')
+
+
+
        
 class EditUserProfileForm(forms.ModelForm):
     class Meta:

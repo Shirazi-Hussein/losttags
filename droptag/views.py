@@ -1,5 +1,5 @@
 from .models import tag, UserProfile
-from .forms import tagForm, UpdateTagForm, UserProfileForm, UserRegisterForm, EditUserForm, EditUserProfileForm
+from .forms import tagForm, UpdateTagForm, UserProfileForm, UserRegisterForm, EditUserProfileForm, PasswordChangingForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -8,13 +8,15 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.views import PasswordChangeView
 # Create your views here.
 
 
 class Home(ListView):
     model = tag
     template_name = 'index.html'
-    #view how many recent tags you want on 'home'
     queryset = tag.objects.order_by('-date_filled')[0:3]
     
     
@@ -88,28 +90,27 @@ def register(request):
     return render(request, 'register.html', context)
 
 
-
-#need to add userprofile form here too, so its all on one edit profile page
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        form = EditUserForm(request.POST, instance=request.user)
         profile_form = EditUserProfileForm(request.POST, instance=request.user.userprofile)
 
-        if form.is_valid() and profile_form.is_valid():
-            user_form = form.save()
+        if profile_form.is_valid():
             custom_form = profile_form.save(False)
-            custom_form.user = user_form
             custom_form.save()
             return HttpResponseRedirect(reverse('homepage'))
     else:
-        form = EditUserForm(instance=request.user)
         profile_form = EditUserProfileForm(instance=request.user.userprofile)
         args = {}
-        args['form'] = form
         args['profile_form'] = profile_form
         return render(request, 'edit_profile.html', args)
 
+
+class ChangePasswordView(PasswordChangeView):
+    form_class = PasswordChangingForm
+    success_url = reverse_lazy('edit_profile')
+    template_name = 'change-password.html'
+    
 
 
 

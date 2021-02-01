@@ -7,7 +7,7 @@ Created on Thu Dec 24 12:25:09 2020
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from .views import Home, TagDetailView, CreateTag, UpdateTag, DeleteTag, AllTags, ViewProfile, register
+from .views import Home, TagDetailView, CreateTag, UpdateTag, DeleteTag, AllTags, ViewProfile, register, ChangePasswordView
 
 urlpatterns = [
     path('', Home.as_view(), name='homepage'),
@@ -19,5 +19,6 @@ urlpatterns = [
     path("tag/delete/<int:pk>", DeleteTag.as_view(), name='delete_tag'),
     path(r'^(?P<user>[-_\w]+)/detail/$', views.ViewProfile, name='view_profile'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('password/', ChangePasswordView.as_view(), name='change_password'),
 ]
 
