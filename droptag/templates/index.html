@@ -1,21 +1,20 @@
-{% extends 'base.html' %}
-
-{% block content %}
-
-
+{% extends 'base.html' %} {% block content %}
 
 <h1>Home</h1>
-<hr>
-<h2>Recent Tags</h2><br/>
+<hr />
+<h2>Recent Tags</h2>
+<br />
 <div class="col-7">
-    <ul class="list-group">
-    {% for tag in object_list %}   
-        <li class="list-group-item"><a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a> - {{ tag.user }}<br/>
-        {{ tag.time_met }}</li>
+  <ul class="list-group">
+    {% for tag in object_list %}
+    <li class="list-group-item">
+      <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a> -
+      {{tag.user }}<br />
+      {{ tag.time_met }}
+    </li>
     {% endfor %}
-    </ul>
+  </ul>
 </div>
-<br/>
+<br />
 
-    
 {% endblock %}
