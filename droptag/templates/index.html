@@ -1,20 +1,41 @@
 {% extends 'base.html' %} {% block content %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+/>
+<link rel="stylesheet" href="{% static 'index/style.css' %}" />
+<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
 
 <h1>Home</h1>
 <hr />
 <h2>Recent Tags</h2>
 <br />
-<div class="col-7">
-  <ul class="list-group">
-    {% for tag in object_list %}
-    <li class="list-group-item">
-      <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a> -
-      {{tag.user }}<br />
-      {{ tag.time_met }}
-    </li>
-    {% endfor %}
-  </ul>
+<div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Tag Owner</th>
+        <th>Date Met</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tag in object_list %}
+      <tr>
+        <td data-title="Username" >
+          <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
+        </td>
+        <td data-title="Tag Owner">{{tag.user }}</td>
+        <td data-title="Link">{{ tag.time_met }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 <br />
+
 
 {% endblock %}

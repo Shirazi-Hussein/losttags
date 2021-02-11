@@ -4,9 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
   </head>
     <title>{% block title %} Home {% endblock %}</title>
   </head>
@@ -39,7 +37,6 @@
             <li id="button-link"><a href="{% url 'register' %}">Sign Up</a></li>
             {% endif %}
           </ul>
-
         </div>
       </div>
     </nav>
@@ -58,5 +55,7 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
