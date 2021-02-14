@@ -111,8 +111,3 @@ class ChangePasswordView(PasswordChangeView):
     form_class = PasswordChangingForm
     success_url = reverse_lazy('edit_profile')
     template_name = 'change-password.html'
-    
-
-
-
-    

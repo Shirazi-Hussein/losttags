@@ -40,7 +40,6 @@
   </small>
   {% endif %} {% endif %}
   <br /><br />
-  <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Back</a>
-
-  {% endblock %}</small
->
+  <a href="{% url 'alltags' %}" class="btn btn-primary">Back</a>
+</small>
+  {% endblock %}

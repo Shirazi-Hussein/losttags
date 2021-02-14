@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Dec 24 12:25:09 2020
-
 @author: truet
 """
 from django.urls import path
@@ -21,4 +20,3 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('password/', ChangePasswordView.as_view(), name='change_password'),
 ]
-

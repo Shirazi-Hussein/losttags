@@ -92,7 +92,7 @@ html {
   overflow-x: hidden;
   padding: 0;
   min-height: 100%;
-  font-size: 65%;
+  font-size: 70%;
 }
 body {
   padding-top: 100px;
@@ -752,6 +752,9 @@ h2 {
 
 /* alltags.html table filter */
 #myInput {
+  background-image: url('icons/search.png'); /* Add a search icon to input */
+  background-position: 12px 15px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
   width: 100%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */

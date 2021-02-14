@@ -57,5 +57,3 @@ class tag(models.Model):
     
     def get_absolute_url(self):
         return reverse('tag_display', args=[str(self.id)])
-    
-            
