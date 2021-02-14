@@ -2,7 +2,20 @@
 {% block content %}
 
 {% load static %}
-<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <!-- navbar css below -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Encode+Sans"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
 
 <h1><i>{{ tag.username }}</i></h1>
 <p class="font-weight-light"><b>Platform:</b> {{ tag.get_platform_display }}</p>
@@ -27,7 +40,7 @@
   </small>
   {% endif %} {% endif %}
   <br /><br />
-  <a href="{% url 'homepage' %}" class="btn btn-primary">Back</a>
+  <a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary">Back</a>
 
   {% endblock %}</small
 >

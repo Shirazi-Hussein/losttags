@@ -1,21 +1,76 @@
-{% extends 'base.html' %} {% block content %}
-{% load static %}
-<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
+{% extends 'base.html' %} {% block content %} {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <!-- navbar css below -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Encode+Sans"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
 
 <h1>All Tags</h1>
-<hr />
-<br />
-<div class="col-7">
-  <ul class="list-group">
-    {% for tag in object_list %}
-    <li class="list-group-item">
-      <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a> -
-      {{tag.user }}<br />
-      {{ tag.time_met }}
-    </li>
-    {% endfor %}
-  </ul>
+<br /><br/>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for usernames..">
+<div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Platform</th>
+        <th>Date Met</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tag in object_list %}
+      <tr>
+        <td data-title="Username">
+          <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
+        </td>
+        <td data-title="Platform">
+          {% if tag.id_link %} 
+          {{ tag.get_platform_display }} 
+          {% else %} 
+          N/A 
+          {% endif %}
+        </td>
+        <td data-title="Link">{{ tag.time_met }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 <br />
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
 
 {% endblock %}

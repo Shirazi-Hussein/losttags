@@ -15,14 +15,15 @@
 </head>
 
 <h2>Recent Tags</h2>
-<br />
+<br/><br/>
+
 <div class="table-responsive-vertical shadow-z-1">
   <!-- Table starts here -->
   <table id="table" class="table">
     <thead>
       <tr>
         <th>Username</th>
-        <th>Tag Owner</th>
+        <th>Platform</th>
         <th>Date Met</th>
       </tr>
     </thead>
@@ -32,7 +33,13 @@
         <td data-title="Username">
           <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
         </td>
-        <td data-title="Tag Owner">{{ tag.user }}</td>
+        <td data-title="Platform">
+          {% if tag.id_link %} 
+          {{ tag.get_platform_display }} 
+          {% else %} 
+          N/A 
+          {% endif %}
+        </td>
         <td data-title="Link">{{ tag.time_met }}</td>
       </tr>
       {% endfor %}

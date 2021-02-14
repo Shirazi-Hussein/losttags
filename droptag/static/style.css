@@ -92,7 +92,7 @@ html {
   overflow-x: hidden;
   padding: 0;
   min-height: 100%;
-  font-size: 62.5%;
+  font-size: 65%;
 }
 body {
   padding-top: 100px;
@@ -748,4 +748,35 @@ h2 {
   .table-responsive-vertical .table-hover.table-mc-deep-orange > tbody > tr > td:hover {
     background-color: #ffccbc;
   }
+}
+
+/* alltags.html table filter */
+#myInput {
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#table {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#table th, #table td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#table tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#table tr.header, #table tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
 }
