@@ -1,20 +1,24 @@
-{% extends 'base.html' %} {% block content %}
-{% load static %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
-/>
-<link rel="stylesheet" href="{% static 'index/style.css' %}" />
-<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
+{% extends 'base.html' %} {% block content %} {% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <!-- navbar css below -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Encode+Sans"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
 
-<h1>Home</h1>
-<hr />
 <h2>Recent Tags</h2>
 <br />
 <div class="table-responsive-vertical shadow-z-1">
   <!-- Table starts here -->
-  <table id="table" class="table table-hover table-mc-light-blue">
+  <table id="table" class="table">
     <thead>
       <tr>
         <th>Username</th>
@@ -25,10 +29,10 @@
     <tbody>
       {% for tag in object_list %}
       <tr>
-        <td data-title="Username" >
+        <td data-title="Username">
           <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
         </td>
-        <td data-title="Tag Owner">{{tag.user }}</td>
+        <td data-title="Tag Owner">{{ tag.user }}</td>
         <td data-title="Link">{{ tag.time_met }}</td>
       </tr>
       {% endfor %}
@@ -36,6 +40,5 @@
   </table>
 </div>
 <br />
-
 
 {% endblock %}
