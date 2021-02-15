@@ -5,7 +5,20 @@
 {% block content %}
 
 {% load static %}
-<link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet"> <link rel="stylesheet" href="{% static 'base/style.css' %}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <!-- navbar css below -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Encode+Sans"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
 
 <h1>Submit A Custom Tag</h1>
 <hr>
@@ -15,6 +28,7 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+            <br/>
             <button class="btn btn-primary">Submit</button>
     </div>
 </div>
