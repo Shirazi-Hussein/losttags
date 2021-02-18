@@ -20,12 +20,10 @@ class tagForm(forms.ModelForm):
         ]
          
         widgets = {
-            'platform': forms.Select(attrs={'class':'form-control'}),
-            'username': forms.TextInput(attrs={'class':'form-control', 
-                                               'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
-            'id_link': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Link To Account (optional)'}),
-            'time_met': forms.DateInput(attrs={'class':'form-control', 'placeholder':'When Did You Meet Them?'}),
-            'note': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Extra Information (optional)'}),
+            'username': forms.TextInput(attrs={'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
+            'id_link': forms.TextInput(attrs={'placeholder':'Link To Account (optional)'}),
+            'time_met': forms.DateInput(attrs={'placeholder':'When Did You Meet Them?'}),
+            'note': forms.Textarea(attrs={'placeholder':'Extra Information (optional)'}),
             }
         
 
@@ -55,9 +53,9 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'password1', 'password2']
         
         widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control'}),
-            'password1': forms.PasswordInput(attrs={'class':'form-control'}),
-            'password2': forms.PasswordInput(attrs={'class':'form-control'}),
+            'username': forms.TextInput(),
+            'password1': forms.PasswordInput(),
+            'password2': forms.PasswordInput(),
             }
 
 

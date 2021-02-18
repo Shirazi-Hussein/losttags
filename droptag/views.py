@@ -18,7 +18,7 @@ import json
 class Home(ListView):
     model = tag
     template_name = 'index.html'
-    queryset = tag.objects.order_by('-date_filled')[0:3]
+    queryset = tag.objects.order_by('-date_filled')[0:5]
     
     
 class AllTags(ListView):

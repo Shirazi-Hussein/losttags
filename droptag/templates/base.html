@@ -8,6 +8,8 @@
     <!-- navbar css below -->
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block css %}
+    {% endblock css %}
   </head>
     <title>{% block title %} Home {% endblock %}</title>
   </head>
@@ -31,8 +33,8 @@
              <li class="dropdown" id="first-link">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'edit_profile' %}" style='font-size: 12px;'>Edit Profile</a></li>
+                <li><a href="{% url 'logout' %}" style='font-size: 12px;'>Logout</a></li>
               </ul>
             </li>
             {% else %}
@@ -45,7 +47,7 @@
     </nav>
     <!---->
     <br />
-    <div class="container">{% block content %} {% endblock %}</div>
+    <div class="container" id="content">{% block content %} {% endblock %}</div>
     <br/>
 
     <!-- jquey/bootstrap/navbar/table scripts -->
@@ -61,5 +63,7 @@
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block javascript %}
+    {% endblock javascript %}
   </body>
 </html>

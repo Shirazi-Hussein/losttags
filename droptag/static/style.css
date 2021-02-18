@@ -1,4 +1,5 @@
 /* -- import Roboto Font ---------------------------- */
+/* new css */
 @font-face {
   font-family: 'Roboto';
   font-style: italic;
@@ -111,9 +112,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-div.container {
+#content {
   background: #ffffff;
-  border: 0.5px solid #e6e6e6;
+  border: 1px solid #e6e6e6;
 }
 
 h1 {
@@ -160,6 +161,7 @@ h2 {
   color: #d0c9be;
   margin: 0 10px;
   letter-spacing: 1.5px;
+  font-size: 17px;
 }
 /* navigation link with right border */
 #first-link {
@@ -178,10 +180,6 @@ h2 {
 }
 .sign-in-btn{
   color: #faf9f9;
-  /* border-style: solid;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 2px; */
   background-color: #a11d1df8;
 }
 .sign-in-btn:hover{
@@ -190,11 +188,6 @@ h2 {
 }
 .sign-up-btn {
   color: #d0c9be;
-  /* border-style: solid;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-radius: 2px;
-  background-color: #a11d1df8; */
   border: 1px solid #d0c9be ;
   background-color: transparent;
 }
@@ -789,4 +782,11 @@ h2 {
 #table tr.header, #table tr:hover {
   /* Add a grey background color to the table header and on hover */
   background-color: #f1f1f1;
+}
+.navbar {
+    position: relative;
+    min-height: 73px;
+}
+nav ul a {
+    font-size: 1.1rem;
 }

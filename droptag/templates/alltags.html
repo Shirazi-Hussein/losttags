@@ -39,11 +39,7 @@
           <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
         </td>
         <td data-title="Platform">
-          {% if tag.id_link %} 
           {{ tag.get_platform_display }} 
-          {% else %} 
-          N/A 
-          {% endif %}
         </td>
         <td data-title="Link">{{ tag.time_met }}</td>
       </tr>
