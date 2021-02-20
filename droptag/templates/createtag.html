@@ -13,17 +13,39 @@
 </header>
 {% endblock css %}
 
+
 <h1 style="font-size: 30px;">Submit A Custom Tag</h1>
 <hr>
-<div class="col-7">
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form|materializecss }}
-            <br/>
-            <button class="btn btn-primary">Submit</button>
+<br>
+<form method="POST">
+  {% csrf_token %}
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s9">
+        {{ form.username|materializecss }}
+      </div>
+      <div class="input-field col s3 offset-9">
+        {{ form.platform|materializecss }}
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="input-field col s9">
+        {{ form.id_link|materializecss }}
+      </div>
+      <div class="input-field col s3 offset-9">
+        {{ form.time_met|materializecss }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        {{ form.note|materializecss }}
+      </div>
+    </div>
+    <button class="btn btn-primary" style="float:left">Submit</button>
+  </form>
+</form>
+
+
 
 {% block javascript %}
 <script>

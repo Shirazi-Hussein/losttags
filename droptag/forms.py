@@ -18,7 +18,7 @@ class tagForm(forms.ModelForm):
         'time_met',
         'note'
         ]
-         
+
         widgets = {
             'username': forms.TextInput(attrs={'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
             'id_link': forms.TextInput(attrs={'placeholder':'Link To Account (optional)'}),
@@ -37,13 +37,6 @@ class UpdateTagForm(forms.ModelForm):
         'note'
         ]
          
-        widgets = {
-            'username': forms.TextInput(attrs={'class':'form-control', 
-                                               'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
-            'id_link': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Link To Account (optional)'}),
-            'time_met': forms.DateInput(attrs={'class':'form-control', 'placeholder':'When Did You Meet Them?'}),
-            'note': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Extra Information (optional)'}),
-            }
 
 
 class UserRegisterForm(UserCreationForm):
