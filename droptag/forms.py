@@ -36,6 +36,13 @@ class UpdateTagForm(forms.ModelForm):
         'time_met',
         'note'
         ]
+
+        widgets = {
+            'username': forms.TextInput(attrs={'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
+            'id_link': forms.TextInput(attrs={'placeholder':'Link To Account (optional)'}),
+            'time_met': forms.DateInput(attrs={'placeholder':'When Did You Meet Them?'}),
+            'note': forms.Textarea(attrs={'placeholder':'Extra Information (optional)'}),
+            }
          
 
 
@@ -43,10 +50,15 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
+        help_texts = {
+            'username': None,
+            'password1': None,
+            'password2': None,
+        }
         fields = ['username', 'password1', 'password2']
         
         widgets = {
-            'username': forms.TextInput(),
+            'username': forms.TextInput(attrs={'placeholder':'Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.'}),
             'password1': forms.PasswordInput(),
             'password2': forms.PasswordInput(),
             }

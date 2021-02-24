@@ -11,13 +11,3 @@ class ChangePasswordView(PasswordChangeView):
     template_name = 'registration/change-password.html'
 
 
-# =============================================================================
-# class UserEditView(generic.UpdateView):
-#     form_class = EditProfileForm
-#     template_name = 'registration/edit_profile.html'
-#     success_url = reverse_lazy('homepage')
-# 
-# 
-#     def get_object(self):
-#         return self.request.user
-# =============================================================================

@@ -141,6 +141,7 @@ h2 {
   background-color: #272A2E;
 }
 #scanfcode {
+  z-index: 9999;
   border-radius: 0px;
   background: #272A2E;
   padding: 10px;
@@ -173,9 +174,9 @@ h2 {
   color: #faf9f9;
   border-style: solid;
   border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.781);
   border-radius: 2px;
-  background-color: #a11d1df8;
+  background-color: #1d92a1f8;
   line-height: 17px;
 }
 .sign-in-btn{
@@ -798,5 +799,22 @@ nav ul a {
 }
 
 .row {
-  margin: -35px;
+  margin: -35px 0px 0px !important;
+}
+
+/* django register form (register.html) */
+.col p {
+  font-size: 15px;
+  color: rgb(172, 170, 170);
+  display: none;
+}
+
+.pwd li {
+  font-size:15px;
+  color: rgb(172, 170, 170);
+  display: none;
+}
+
+.dropdown {
+  left: 13px;
 }
