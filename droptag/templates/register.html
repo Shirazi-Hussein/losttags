@@ -14,14 +14,6 @@
 
 <h1 style="font-size: 30px;">Create A Profile</h1>
 <hr>
-<!---
-<form method="post">
-  {% csrf_token %}
-  {{ form|materializecss }}
-  {{ p_reg_form|materializecss }}
-  <button class="btn btn-primary" style="float:left">Submit</button>
-</form>
--->
 <br/><br/>
 <form method="POST">
   {% csrf_token %}
@@ -51,35 +43,45 @@
       </div>
       <div class="row dropdown">
         <div class="input-field col s6">
-          <select multiple>
-            <option value="1">Steam</option>
-            <option value="2">Xbox</option>
-            <option value="3">PlayStation</option>
-            <option value="4">Discord</option>
+          <select id="links" multiple>
+            <option value="STM">Steam</option>
+            <option value="XB">Xbox</option>
+            <option value="PSN">PlayStation</option>
+            <option value="DC">Discord</option>
           </select>
           <label>Choose Platforms</label>
         </div>
       </div>
-      <!-- save this for the platform links
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="http://www.mywebsite.com" id="website" type="text" class="validate">
-          <label for="website">Website</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="contact@myweb.com" id="email" type="text" class="validate">
-          <label for="email">Contact email</label>
+      <div class="row" id="steam_link">
+        <div class="input-field col s8">
+          {{ p_reg_form.steam_id|materializecss }}
         </div>
       </div>
-      -->
+      <div class="row" id="playstation_link">
+        <div class="input-field col s8">
+          {{ p_reg_form.psn_id|materializecss }}
+        </div>
+      </div>
+      <div class="row" id="xbox_link">
+        <div class="input-field col s8">
+          {{ p_reg_form.xbox_id|materializecss }}
+        </div>
+      </div>
+      <div class="row" id="discord_tag">
+        <div class="input-field col s8">
+          {{ p_reg_form.discord_id|materializecss }}
+        </div>
+      </div>
       <div class="row">
-            <div class="input-field col s12">
-              {{ p_reg_form.bio|materializecss }}
-            </div>
-          </div>
+        <div class="input-field col s12">
+          {{ p_reg_form.bio|materializecss }}
+        </div>
+      </div>
+      <br/>
+      <button class="btn btn-primary" style="float:left">Submit</button>
     </form>
   </div>
-
+</form>
 <br/><br/>
 
 {% block javascript %}
@@ -101,6 +103,40 @@ $(document).ready(function(){
 });
 </script>
 
+<script>
+  //add each checkbox value
+  $(function() {
+      $("#steam_link").hide();
+      $("#playstation_link").hide(); 
+      $("#xbox_link").hide(); 
+      $("#discord_tag").hide(); 
+      $('#links').change(function(){
+          if($('#links').val().includes("STM")) {
+              $('#steam_link').show(); 
+          } else {
+              $('#steam_link').hide(); 
+          }
+
+          if($('#links').val().includes("XB")) {
+              $('#xbox_link').show(); 
+          } else {
+              $('#xbox_link').hide(); 
+          }
+
+          if($('#links').val().includes("PSN")) {
+              $('#playstation_link').show(); 
+          } else {
+              $('#playstation_link').hide(); 
+          }
+
+          if($('#links').val().includes("DC")) {
+              $('#discord_tag').show(); 
+          } else {
+              $('#discord_tag').hide(); 
+          }
+      });
+  });
+</script>
 
 {% endblock javascript %}
 

@@ -5,35 +5,86 @@
 {% block content %}
 
 {% load static %}
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-  />
-  <!-- navbar css below -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Encode+Sans"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
-</head>
+{% load materializecss %}
+{% block css %}
+<header>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+</header>
+{% endblock css %}
 
-<h1>Edit Profile</h1>
+<h1 style="font-size: 30px;">Edit Profile</h1>
 <hr>
 <br/><br/>
 
+
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <form class="col s12">
+      <div class="row" id="steam_link">
+        <div class="input-field col s8">
+          {{ profile_form.steam_id|materializecss }}
+        </div>
+      </div>
+      <div class="row" id="playstation_link">
+        <div class="input-field col s8">
+          {{ profile_form.psn_id|materializecss }}
+        </div>
+      </div>
+      <div class="row" id="xbox_link">
+        <div class="input-field col s8">
+          {{ profile_form.xbox_id|materializecss }}
+        </div>
+      </div>
+      <div class="row" id="discord_tag">
+        <div class="input-field col s8">
+          {{ profile_form.discord_id|materializecss }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          {{ profile_form.bio|materializecss }}
+        </div>
+      </div>
+      <small>Click here to<a href="{% url 'change_password' %}"> Change Password</a></small>
+      <br/><br/>
+      <button class="btn btn-primary">Update</button>
+    </form>
+  </div>
+</form>
+<br/><br/>
+<!--
 <div class="col-7">
     <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
             {% csrf_token %}
-            {{ profile_form.as_p }}
-            {{ form.as_p }}
+            {{ profile_form|materializecss }}
             <small>Click here to<a href="{% url 'change_password' %}"> Change Password</a></small>
             <br/><br/>
             <button class="btn btn-primary">Update</button>
     </div>
 </div>
+-->
+
+{% block javascript %}
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/js/materialize.min.js" integrity="sha256-SrBfGi+Zp2LhAvy9M1bWOCXztRU9Ztztxmu5BcYPcPE=" crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+
+  // Initialize materialize data picker
+  $('.datepicker').datepicker({'format': 'yyyy-mm-dd'});
+
+  $('select').formSelect();
+  $('select').material_select();
+});
+</script>
+{% endblock javascript %}
 
 {% endblock %}
