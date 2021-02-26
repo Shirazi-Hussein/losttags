@@ -818,3 +818,14 @@ nav ul a {
 .dropdown {
   left: 13px;
 }
+
+/* shifts elements to the right a little to align */
+#right-move {
+  position: relative;
+  left: 20px;
+}
+
+#pwd-change-field {
+  position: relative;
+  left: 10px;
+}

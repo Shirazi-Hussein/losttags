@@ -14,7 +14,7 @@
 {% endblock css %}
 
 
-<h1 style="font-size: 30px;">Submit A Custom Tag</h1>
+<h1 style="font-size: 30px;" id="right-move">Submit A Custom Tag</h1>
 <hr>
 <br>
 <form method="POST">
@@ -41,7 +41,7 @@
         {{ form.note|materializecss }}
       </div>
     </div>
-    <button class="btn btn-primary" style="float:left">Submit</button>
+    <button class="btn btn-primary" style="float:left" id="right-move">Submit</button>
   </form>
 </form>
 
@@ -69,8 +69,6 @@ $(document).ready(function(){
 });
 </script>
 {% endblock javascript %}
-
-<br/><br/>
 
 
 {% endblock %}

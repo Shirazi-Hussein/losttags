@@ -89,7 +89,7 @@ class UserProfileForm(forms.ModelForm):
 class PasswordChangingForm(PasswordChangeForm):
     old_password = forms.CharField(label='Old Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
     new_password1 = forms.CharField(label='New Password', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
-    new_password2 = forms.CharField(label='New Password Again', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
+    new_password2 = forms.CharField(label='New Password Confirmation', widget=forms.PasswordInput(attrs={'class':'form-control', 'type':'password'}))
     
     
     class Meta:

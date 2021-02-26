@@ -88,7 +88,7 @@ def register(request):
         'form': form,
         'p_reg_form': p_reg_form
     }
-    return render(request, 'register.html', context)
+    return render(request, 'registration/register.html', context)
 
 
 @login_required

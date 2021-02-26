@@ -13,7 +13,7 @@
 </header>
 {% endblock css %}
 
-<h1 style="font-size: 30px;">Edit Profile</h1>
+<h1 style="font-size: 30px;" id="right-move">Edit Profile</h1>
 <hr>
 <br/><br/>
 
@@ -47,25 +47,14 @@
           {{ profile_form.bio|materializecss }}
         </div>
       </div>
-      <small>Click here to<a href="{% url 'change_password' %}"> Change Password</a></small>
+      <small id="right-move">Click here to <a href="{% url 'change_password' %}" > Change Password</a></small>
       <br/><br/>
-      <button class="btn btn-primary">Update</button>
+      <button class="btn btn-primary" id="right-move">Update</button>
     </form>
   </div>
 </form>
 <br/><br/>
-<!--
-<div class="col-7">
-    <div class="form-group">
-        <form method="POST">
-            {% csrf_token %}
-            {{ profile_form|materializecss }}
-            <small>Click here to<a href="{% url 'change_password' %}"> Change Password</a></small>
-            <br/><br/>
-            <button class="btn btn-primary">Update</button>
-    </div>
-</div>
--->
+
 
 {% block javascript %}
 <script

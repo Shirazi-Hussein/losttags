@@ -12,7 +12,7 @@
 </header>
 {% endblock css %}
 
-<h1 style="font-size: 30px;">Create A Profile</h1>
+<h1 style="font-size: 30px;" id="right-move">Create A Profile</h1>
 <hr>
 <br/><br/>
 <form method="POST">
@@ -29,11 +29,9 @@
           {{ p_reg_form.name|materializecss }}
         </div>
       </div>
-  
       <div class="row">
         <div class="input-field col s8 pwd">
           {{ form.password1|materializecss }}
-          
         </div>
       </div>
       <div class="row">
@@ -78,7 +76,7 @@
         </div>
       </div>
       <br/>
-      <button class="btn btn-primary" style="float:left">Submit</button>
+      <button class="btn btn-primary" style="float:left" id="right-move">Submit</button>
     </form>
   </div>
 </form>
