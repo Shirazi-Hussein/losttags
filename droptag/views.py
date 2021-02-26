@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, authenticate, login
 from django.contrib.auth.views import PasswordChangeView
 import json
 # Create your views here.
@@ -79,6 +79,11 @@ def register(request):
             p_reg_form = UserProfileForm(request.POST, instance=user.userprofile)
             p_reg_form.full_clean()
             p_reg_form.save()
+            messages.info(request, "Thanks for registering. You are now logged in.")
+            user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, user)
             return HttpResponseRedirect(reverse('homepage'))
     else:
         form = UserRegisterForm()
@@ -88,6 +93,7 @@ def register(request):
         'form': form,
         'p_reg_form': p_reg_form
     }
+
     return render(request, 'registration/register.html', context)
 
 
