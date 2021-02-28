@@ -9,32 +9,35 @@
 
 {% block css %}
 <header>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
 </header>
 {% endblock css %}
 
 <h1 style="font-size: 30px;" id="right-move">Login</h1>
 <hr>
-<br/>
+<br/><br/>
 <form method="POST">
     {% csrf_token %}
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s8">
-          {{ form.username|materializecss }}
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s8">
+            {{ form.username|materializecss:"icon=person" }}
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s8">
-          {{ form.password|materializecss }}
+        <div class="row">
+          <div class="input-field col s8">
+            {{ form.password|materializecss:"icon=lock_outline" }}
+          </div>
         </div>
-      </div>
-      <button class="btn btn-primary" style="float:left" id="right-move">Submit</button>
-    </form>
-  </form>
+        <button class="btn btn-primary" style="float:left" id="right-move">Submit</button>
+      </form>
+    </div>
+</form>
 
 
-<br/><br/>
+<br/>
 
 <strong id="right-move" style="font-size: 16px;">Don't have an account? Register <a href="{% url 'register' %}">here</a>.</strong>
 <br/><br/>

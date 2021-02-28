@@ -21,26 +21,27 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s8">
-          {{ form.username|materializecss }}
+          {{ form.username|materializecss:"icon=person" }}
         </div>
       </div>
       <div class="row">
         <div class="input-field col s8">
-          {{ p_reg_form.name|materializecss }}
+          {{ p_reg_form.name|materializecss:"icon=assignment_ind" }}
         </div>
       </div>
       <div class="row">
         <div class="input-field col s8 pwd">
-          {{ form.password1|materializecss }}
+          {{ form.password1|materializecss:"icon=lock_open" }}
         </div>
       </div>
       <div class="row">
         <div class="input-field col s8 pwd">
-          {{ form.password2|materializecss }}
+          {{ form.password2|materializecss:"icon=lock_outline" }}
         </div>
       </div>
       <div class="row dropdown">
         <div class="input-field col s6">
+          <!-- add <i class="material-icons">add</i> somewhere here idk -->
           <select id="links" multiple>
             <option value="STM">Steam</option>
             <option value="XB">Xbox</option>
@@ -52,27 +53,27 @@
       </div>
       <div class="row" id="steam_link">
         <div class="input-field col s8">
-          {{ p_reg_form.steam_id|materializecss }}
+          {{ p_reg_form.steam_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="playstation_link">
         <div class="input-field col s8">
-          {{ p_reg_form.psn_id|materializecss }}
+          {{ p_reg_form.psn_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="xbox_link">
         <div class="input-field col s8">
-          {{ p_reg_form.xbox_id|materializecss }}
+          {{ p_reg_form.xbox_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="discord_tag">
         <div class="input-field col s8">
-          {{ p_reg_form.discord_id|materializecss }}
+          {{ p_reg_form.discord_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          {{ p_reg_form.bio|materializecss }}
+          {{ p_reg_form.bio|materializecss:"icon=create" }}
         </div>
       </div>
       <br/>

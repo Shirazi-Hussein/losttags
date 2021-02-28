@@ -19,8 +19,12 @@ class tagForm(forms.ModelForm):
         'note'
         ]
 
+        labels = {
+            'time_met':'Date Met'
+        }
+
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
+            'username': forms.TextInput(attrs={'placeholder':'Steam, Xbox, PSN, or Discord Username'}),
             'id_link': forms.TextInput(attrs={'placeholder':'Link To Account (optional)'}),
             'time_met': forms.DateInput(attrs={'placeholder':'When Did You Meet Them?'}),
             'note': forms.Textarea(attrs={'placeholder':'Extra Information (optional)'}),
@@ -37,8 +41,12 @@ class UpdateTagForm(forms.ModelForm):
         'note'
         ]
 
+        labels = {
+            'time_met':'Date Met'
+        }
+
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder':'Steam Name, Gamertag, Full Discord Tag, Or PSN Username'}),
+            'username': forms.TextInput(attrs={'placeholder':'Steam, Xbox, PSN, or Discord Username'}),
             'id_link': forms.TextInput(attrs={'placeholder':'Link To Account (optional)'}),
             'time_met': forms.DateInput(attrs={'placeholder':'When Did You Meet Them?'}),
             'note': forms.Textarea(attrs={'placeholder':'Extra Information (optional)'}),

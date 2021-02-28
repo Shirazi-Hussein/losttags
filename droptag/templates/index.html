@@ -1,20 +1,23 @@
-{% extends 'base.html' %} {% block content %} {% load static %}
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+
+
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- navbar css below -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Encode+Sans"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
-<h2>Find Old Friends, From Anywhere</h2>
+
+{% load materializecss %}
+
+<h2 style="font-size: 30px;">Find Old Friends, From Anywhere</h2>
 <hr/>
 
 Have you been thinking about that online friend who last logged in years ago? 
@@ -23,34 +26,32 @@ relevant information and they'll find themselves in our database wth an easy sea
 <br/><br/>
 <br/>
 
-<h2>Recent Tags</h2>
+<h2 style="font-size: 30px;">Recent Tags</h2>
 <hr/>
 
-<div class="table-responsive-vertical shadow-z-1">
-  <!-- Table starts here -->
-  <table id="table" class="table">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Platform</th>
-        <th>Date Met</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for tag in object_list %}
-      <tr>
-        <td data-title="Username">
-          <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
-        </td>
-        <td data-title="Platform">
-          {{ tag.get_platform_display }} 
-        </td>
-        <td data-title="Link">{{ tag.time_met }}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
+<!-- Table starts here -->
+<table class="highlight" >
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Platform</th>
+      <th>Date Met</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tag in object_list %}
+    <tr>
+      <td data-title="Username">
+        <a href="{% url 'tag_display' tag.pk %}">{{ tag.username }}</a>
+      </td>
+      <td data-title="Platform">
+        {{ tag.get_platform_display }} 
+      </td>
+      <td data-title="Link">{{ tag.time_met }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 <br />
 
-{% endblock %}
+{% endblock content %}

@@ -9,6 +9,7 @@
 
 {% block css %}
 <header>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
 </header>
 {% endblock css %}
@@ -21,12 +22,12 @@
   <form class="col s12">
     <div class="row">
       <div class="input-field col s9">
-        {{ form.username|materializecss }}
+        {{ form.username|materializecss:"icon=perm_contact_calendar" }}
       </div>
     </div>
     <div class="row">
       <div class="input-field col s9">
-        {{ form.id_link|materializecss }}
+        {{ form.id_link|materializecss:"icon=insert_link" }}
       </div>
       <div class="input-field col s3 offset-9">
         {{ form.time_met|materializecss }}
@@ -34,7 +35,7 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        {{ form.note|materializecss }}
+        {{ form.note|materializecss:"icon=create" }}
       </div>
     </div>
     <button class="btn btn-primary" style="float:left" id="right-move">Submit</button>

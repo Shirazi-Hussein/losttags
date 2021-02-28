@@ -119,6 +119,7 @@ body {
 
 h1 {
   color: #202121;
+  font-size: 30px !important;
 }
 
 h2 {
@@ -210,7 +211,7 @@ h2 {
   -moz-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
 }
-/* -- Material Design Table style -------------- */
+/* -- Material Design Table style --------------
 .table {
   width: 100%;
   max-width: 100%;
@@ -748,14 +749,16 @@ h2 {
   .table-responsive-vertical .table-hover.table-mc-deep-orange > tbody > tr > td:hover {
     background-color: #ffccbc;
   }
-}
+} */
+
+
 
 /* alltags.html table filter */
 #myInput {
   background-image: url('icons/search.png'); /* Add a search icon to input */
   background-position: 12px 15px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
+  width: 93%; /* Full-width */
   font-size: 16px; /* Increase font-size */
   padding: 12px 20px 12px 40px; /* Add some padding */
   border: 1px solid #ddd; /* Add a grey border */
@@ -828,4 +831,14 @@ nav ul a {
 #pwd-change-field {
   position: relative;
   left: 10px;
+}
+
+/* materialize tables found in index/alltags.html */
+table.highlight>tbody>tr:hover {
+  background-color: #d6d4d48f;      /* whatever color you want */
+}
+
+/* date picker for createtag.html */
+#modal-aa8f496b-eb39-e670-139e-a76d688f754e {
+  margin: 0px 0px 0px !important;
 }

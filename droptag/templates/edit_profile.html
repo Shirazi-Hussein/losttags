@@ -24,27 +24,27 @@
     <form class="col s12">
       <div class="row" id="steam_link">
         <div class="input-field col s8">
-          {{ profile_form.steam_id|materializecss }}
+          {{ profile_form.steam_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="playstation_link">
         <div class="input-field col s8">
-          {{ profile_form.psn_id|materializecss }}
+          {{ profile_form.psn_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="xbox_link">
         <div class="input-field col s8">
-          {{ profile_form.xbox_id|materializecss }}
+          {{ profile_form.xbox_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row" id="discord_tag">
         <div class="input-field col s8">
-          {{ profile_form.discord_id|materializecss }}
+          {{ profile_form.discord_id|materializecss:"icon=insert_link" }}
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          {{ profile_form.bio|materializecss }}
+          {{ profile_form.bio|materializecss:"icon=create" }}
         </div>
       </div>
       <small id="right-move">Click here to <a href="{% url 'change_password' %}" > Change Password</a></small>
