@@ -1,6 +1,9 @@
+**Lost Tags is currently undergoing major maintenance. We'll be moving from a traditional full-stack django structure
+to a smoother django REST framework with React front-end.**
+
 # Lost Tags
 
-Lost Tags is a website dedicated to helping you find long lost friends that have logged off and never came back online.
+Lost Tags is a website dedicated to helping you get in touch with long lost friends that abandoned their online accounts.
 
 ## How it works
 
@@ -19,15 +22,6 @@ is readily viewable to everyone. Once submitted, anyone can view your profile an
 Our seamless database updates in real time, with a snazzy search function to look up a tag via username, platform or time submitted. If you spot username
 on a tag, you can view the submitters information and get in touch with their contact information linked on their profile.
 
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
