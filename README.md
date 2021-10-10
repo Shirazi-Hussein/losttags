@@ -1,5 +1,5 @@
-**Lost Tags is currently undergoing major maintenance. We'll be moving from a traditional full-stack django structure
-to a smoother django REST framework with React front-end.**
+**Lost Tags is currently a work in progress. We'll be moving from a full-stack django structure
+to a smoother Nodejs and React stack.**
 
 # Lost Tags
 
