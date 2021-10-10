@@ -19,7 +19,7 @@ is readily viewable to everyone. Once submitted, anyone can view your profile an
 
 ### Finding a tag
 
-Our seamless database updates in real time, with a snazzy search function to look up a tag via username, platform or time submitted. If you spot username
+The database updates in real time, with a search function to look up a tag via username, platform or time submitted. If you spot your username
 on a tag, you can view the submitters information and get in touch with their contact information linked on their profile.
 
 
