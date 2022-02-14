@@ -1,13 +1,12 @@
-**Lost Tags is currently a work in progress. We'll be moving from a full-stack django structure
-to a smoother Nodejs and React stack.**
+**User Tags is currently a work in progress. We're currently moving from a full stack Django approach to React and Django REST. Estimated release date is 3/5.**
 
-# Lost Tags
+# User Tags
 
-Lost Tags is a website dedicated to helping you get in touch with long lost friends that abandoned their online accounts.
+User Tags is a website dedicated to helping you get in touch with long lost friends that abandoned their online accounts.
 
 ## How it works
 
-Lost Tags is a two party system; requiring the user searching and the user being searched to both use the platform.
+User Tags is a two party system; requiring the user searching and the user being searched to both use the platform.
 This approach makes sure to respect the privacy of all parties involved, and for users who don't want to be found to have 
 that opportunity.
 
