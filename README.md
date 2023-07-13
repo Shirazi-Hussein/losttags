@@ -1,4 +1,4 @@
-**This is a largely deprecated repository. User Tags is currently a work in progress as we move from a full stack Django approach to React and Django REST. Estimated release date is 3/5.**
+**User Tags is currently a work in progress as we move from a full stack Django approach to React and Django REST. Estimated release date is 9/5.**
 
 # User Tags
 
